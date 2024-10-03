@@ -1,0 +1,19 @@
+<template>
+  <form [formGroup]="group">
+    <input formControlName="mycontrol"/>
+  </form>
+</template>
+
+<script lang="ts">
+  import {FormBuilder, ReactiveFormsModule} from '@angular/forms' with {analog: 'imports'};
+  import {outputFromObservable} from '@angular/core/rxjs-interop';
+  import {inject} from "@angular/core";
+
+  const fb = inject(FormBuilder);
+  const group = fb.group({
+    mycontrol: [''],
+  });
+
+  const valueChange = outputFromObservable(group.valueChanges);
+
+</script>
